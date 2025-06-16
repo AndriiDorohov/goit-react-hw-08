@@ -60,6 +60,28 @@ input:-webkit-autofill:active {
     margin-top: 0.25rem;
 }
 
+.passwordWrapper {
+    position: relative;
+}
+
+.eyeButton {
+    position: absolute;
+    right: 12px;
+    top: 40%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #0ff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 4px;
+    transition: color 0.3s ease;
+}
+
+.eyeButton:hover {
+    color: #fff;
+}
+
 @keyframes cyanPulse {
     0% {
         color: #0ff;

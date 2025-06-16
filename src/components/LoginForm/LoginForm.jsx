@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { string, object } from "yup";
 import { useDispatch } from "react-redux";
@@ -5,6 +6,7 @@ import { login } from "../../redux/auth/operations";
 import toast from "react-hot-toast";
 import Button from "../Button/Button";
 import styles from "./LoginForm.module.css";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const schema = object({
   email: string().email("Invalid email").required("Required"),
@@ -13,6 +15,7 @@ const schema = object({
 
 export default function LoginForm() {
   const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (values, actions) => {
     try {
@@ -41,12 +44,22 @@ export default function LoginForm() {
           />
           <ErrorMessage name="email" component="div" className={styles.error} />
 
-          <Field
-            className={styles.input}
-            name="password"
-            type="password"
-            placeholder="Password"
-          />
+          <div className={styles.passwordWrapper}>
+            <Field
+              className={styles.input}
+              name="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+            />
+            <button
+              type="button"
+              className={styles.eyeButton}
+              onClick={() => setShowPassword((prev) => !prev)}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? <FiEyeOff /> : <FiEye />}
+            </button>
+          </div>
           <ErrorMessage
             name="password"
             component="div"

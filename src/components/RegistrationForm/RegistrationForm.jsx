@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { string, object } from "yup";
 import { register } from "../../redux/auth/operations";
 import Button from "../Button/Button";
 import styles from "./RegistrationForm.module.css";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const validationSchema = object({
   name: string().min(2, "Too short").required("Required"),
@@ -13,6 +15,7 @@ const validationSchema = object({
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (values, actions) => {
     dispatch(register(values));
@@ -44,12 +47,22 @@ export default function RegistrationForm() {
           />
           <ErrorMessage name="email" component="div" className={styles.error} />
 
-          <Field
-            type="password"
-            name="password"
-            placeholder="Password"
-            className={styles.input}
-          />
+          <div className={styles.passwordWrapper}>
+            <Field
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              className={styles.input}
+            />
+            <button
+              type="button"
+              className={styles.eyeButton}
+              onClick={() => setShowPassword((prev) => !prev)}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? <FiEyeOff /> : <FiEye />}
+            </button>
+          </div>
           <ErrorMessage
             name="password"
             component="div"
