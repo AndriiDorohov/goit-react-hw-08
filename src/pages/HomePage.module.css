@@ -1,0 +1,24 @@
+.pageWrapper {
+    height: 100vh;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.lottieAnimation {
+    max-width: 700px;
+    width: 90%;
+    filter: drop-shadow(0 0 10px #00ffff);
+    animation: neonPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+    0% {
+        filter: drop-shadow(0 0 5px #00ffff) brightness(1);
+    }
+    100% {
+        filter: drop-shadow(0 0 20px #00ffff) brightness(1.3);
+    }
+}

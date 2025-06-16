@@ -1,0 +1,167 @@
+.button,
+.edit,
+.save,
+.cancel,
+.delete {
+    width: 100px;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 0;
+}
+
+.default {
+    background-color: #0a84ff;
+    color: #ffffff;
+}
+
+.default:hover {
+    background-color: #006fe0;
+}
+
+.delete {
+    background-color: transparent;
+    color: #ff3b30;
+    border: 1px solid rgba(255, 59, 48, 0.4);
+}
+
+.delete:hover {
+    background-color: rgba(255, 59, 48, 0.1);
+    border-color: rgba(255, 59, 48, 0.6);
+}
+
+.edit {
+    background-color: transparent;
+    color: #0a84ff;
+    border: 1px solid rgba(10, 132, 255, 0.4);
+}
+
+.edit:hover {
+    background-color: rgba(10, 132, 255, 0.1);
+    border-color: rgba(10, 132, 255, 0.6);
+}
+
+.save {
+    background-color: transparent;
+    color: #0a84ff;
+    border: 1px solid rgba(10, 132, 255, 0.4);
+}
+
+.save:hover {
+    background-color: rgba(10, 132, 255, 0.1);
+    border-color: rgba(10, 132, 255, 0.6);
+}
+
+.cancel {
+    background-color: transparent;
+    color: #ff3b30;
+    border: 1px solid rgba(255, 59, 48, 0.4);
+}
+
+.cancel:hover {
+    background-color: rgba(255, 59, 48, 0.1);
+    border-color: rgba(255, 59, 48, 0.6);
+}
+
+.link {
+    background: none;
+    border: none;
+    padding: 6px 12px;
+    font: inherit;
+    font-weight: 500;
+    color: #ff6b6b;
+    cursor: pointer;
+    transition:
+        color 0.2s ease,
+        text-shadow 0.3s ease;
+}
+
+.link:hover {
+    color: #ffffff;
+    text-shadow:
+        0 0 5px #ff3b30,
+        0 0 10px #ff3b30,
+        0 0 20px #ff3b30;
+}
+
+.formSubmit {
+    background-color: rgba(10, 132, 255, 0.2);
+    width: 50%;
+    color: #87ceeb;
+    padding: 12px;
+    border-radius: 0;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+    align-self: center;
+    backdrop-filter: blur(6px);
+    border: none;
+}
+
+.formSubmit:hover {
+    background-color: rgba(10, 132, 255, 0.35);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.register {
+    width: 100%;
+    background-color: transparent;
+    color: #0ff;
+    border: 1px solid #0ff;
+    text-shadow:
+        0 0 5px #0ff,
+        0 0 10px #0ff,
+        0 0 20px #0ff;
+    box-shadow: 0 0 10px #0ff;
+    font-weight: 700;
+    padding: 12px;
+    transition: 0.3s ease;
+}
+
+.register:hover {
+    background-color: rgba(0, 255, 255, 0.1);
+    box-shadow:
+        0 0 15px #0ff,
+        0 0 30px #0ff;
+    color: #fff;
+}
+
+.login {
+    width: 100%;
+    background-color: transparent;
+    color: #0f0;
+    border: 1px solid #0f0;
+    text-shadow:
+        0 0 5px #0f0,
+        0 0 10px #0f0,
+        0 0 20px #0f0;
+    box-shadow: 0 0 10px #0f0;
+    font-weight: 700;
+    padding: 12px;
+    transition: 0.3s ease;
+}
+
+.login:hover {
+    background-color: rgba(0, 255, 0, 0.1);
+    box-shadow:
+        0 0 15px #0f0,
+        0 0 30px #0f0;
+    color: #fff;
+}
+
+.iconButton {
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}

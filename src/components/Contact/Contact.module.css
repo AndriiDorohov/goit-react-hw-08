@@ -1,0 +1,156 @@
+.contactItem {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    background-color: rgba(30, 0, 30, 0.4);
+    border: 1px solid rgba(255, 182, 230, 0.3);
+    box-shadow: 0 0 10px rgba(255, 182, 230, 0.2);
+    transition: background-color 0.4s ease;
+    animation: none;
+    position: relative;
+}
+
+.contactItem:hover {
+    animation: pulsePink 1s infinite alternate;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.cellName,
+.cellPhone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #ffc0cb;
+    text-shadow: 0 0 4px rgba(255, 192, 203, 0.5);
+}
+
+.cellPhone span {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+.input {
+    background-color: rgba(30, 0, 30, 0.5);
+    color: #ffc0cb;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid rgba(255, 192, 203, 0.4);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.input:focus {
+    outline: none;
+    background-color: rgba(30, 0, 30, 0.7);
+    border-color: #ffb6e6;
+    box-shadow:
+        0 0 10px #ffb6e6,
+        0 0 20px rgba(255, 182, 230, 0.4);
+}
+
+.icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    color: #ffc0cb;
+    text-shadow: 0 0 4px #ffb6e6;
+}
+
+.userIcon {
+    color: #ffd6e8;
+}
+
+.phoneIcon {
+    color: #ffc0cb;
+}
+
+.countryCode {
+    font-size: 0.9rem;
+    color: #ffb6e6;
+    font-weight: 600;
+    background-color: rgba(255, 182, 230, 0.15);
+    padding: 2px 6px;
+    border-radius: 6px;
+    margin-left: 4px;
+    flex-shrink: 0;
+}
+
+.callingCode {
+    font-size: 0.85rem;
+    color: #ffd1ea;
+    margin-left: 4px;
+}
+
+.callMenuWrapper {
+    position: relative;
+}
+
+.callOptions {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(30, 0, 30, 0.95);
+    border: 1px solid rgba(255, 182, 230, 0.4);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(255, 182, 230, 0.3);
+    z-index: 1000;
+    min-width: 130px;
+    padding: 4px 0;
+}
+
+.callOptions button {
+    background: none;
+    border: none;
+    padding: 10px 16px;
+    color: #ffc0cb;
+    font-size: 0.95rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-family: inherit;
+    width: 100%;
+}
+
+.callOptions button:hover {
+    background-color: rgba(255, 182, 230, 0.15);
+}
+
+@keyframes pulsePink {
+    0% {
+        background-color: rgba(40, 0, 40, 0.5);
+        box-shadow: 0 0 10px rgba(255, 182, 230, 0.2);
+    }
+    50% {
+        background-color: rgba(60, 0, 60, 0.5);
+        box-shadow: 0 0 15px rgba(255, 182, 230, 0.4);
+    }
+    100% {
+        background-color: rgba(45, 0, 45, 0.5);
+        box-shadow: 0 0 20px rgba(255, 182, 230, 0.3);
+    }
+}

@@ -1,0 +1,84 @@
+.iconButton {
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.iconButton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.iconEdit {
+    color: #0a84ff;
+    border-color: rgba(10, 132, 255, 0.4);
+}
+
+.iconEdit:hover {
+    background-color: rgba(10, 132, 255, 0.1);
+    border-color: rgba(10, 132, 255, 0.6);
+}
+
+.iconDelete {
+    color: #ff3b30;
+    border-color: rgba(255, 59, 48, 0.4);
+}
+
+.iconDelete:hover {
+    background-color: rgba(255, 59, 48, 0.1);
+    border-color: rgba(255, 59, 48, 0.6);
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"] {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    padding: 10px;
+    font-size: 0.95rem;
+    border: 1px solid #444;
+    border-radius: 6px;
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+input:focus-visible {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #0a84ff;
+    box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.3);
+}
+
+:root {
+    --toastify-color-light: #1c1c1e;
+    --toastify-text-color-light: #ffffff;
+    --toastify-color-success: #0a84ff;
+    --toastify-color-error: #ff3b30;
+}

@@ -1,0 +1,78 @@
+.container {
+    padding: 20px;
+    margin-bottom: 1.5rem;
+}
+
+.label {
+    font-weight: 600;
+    color: #0ff;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    display: block;
+    text-shadow: 0 0 5px #0ff;
+}
+
+.searchBox {
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    padding: 10px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+.searchBox:focus-within {
+    border-color: #0ff;
+    box-shadow:
+        0 0 10px #0ff,
+        0 0 20px #0ff;
+}
+
+.input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #0ff;
+    font-size: 1rem;
+    padding-left: 10px;
+}
+
+.input::placeholder {
+    color: #66ffff;
+    opacity: 0.7;
+}
+
+input:-webkit-autofill {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.4) inset !important;
+    -webkit-text-fill-color: #0ff !important;
+    transition: background-color 9999s ease-in-out 0s;
+}
+
+.icon {
+    color: #0ff;
+    font-size: 1.2rem;
+    text-shadow: 0 0 5px #0ff;
+}
+
+.micButton {
+    background: none;
+    border: none;
+    color: #0ff;
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding-left: 8px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px #0ff;
+}
+
+.micButton:hover {
+    color: #fff;
+    text-shadow:
+        0 0 8px #0ff,
+        0 0 12px #0ff;
+}

@@ -1,0 +1,36 @@
+.nav {
+    display: flex;
+    gap: 20px;
+    padding: 8px 16px;
+    align-items: center;
+}
+
+.link,
+.neon-link {
+    color: #87ceeb;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 12px;
+    transition:
+        color 0.2s ease,
+        text-shadow 0.3s ease;
+}
+
+.link:hover,
+.neon-link:hover {
+    color: #b2ffff;
+    text-shadow:
+        0 0 5px #b2ffff,
+        0 0 10px #b2ffff,
+        0 0 20px #b2ffff;
+}
+
+.active,
+.neon-link.active {
+    color: #00ffff;
+    text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff;
+    border-bottom: 2px solid #00ffff;
+}

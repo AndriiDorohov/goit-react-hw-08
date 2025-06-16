@@ -1,0 +1,99 @@
+.iconButton {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    color: inherit;
+}
+
+.iconButton:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.iconButton:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(10, 132, 255, 0.4);
+}
+
+.iconCopy {
+    color: #64d2ff;
+    border-color: rgba(100, 210, 255, 0.4);
+}
+.iconCopy:hover {
+    background-color: rgba(100, 210, 255, 0.1);
+    border-color: rgba(100, 210, 255, 0.6);
+}
+
+.default {
+    color: #ffffff;
+    border-color: #444;
+}
+
+.default:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.edit {
+    color: #0a84ff;
+    border-color: rgba(10, 132, 255, 0.4);
+}
+
+.edit:hover {
+    background-color: rgba(10, 132, 255, 0.1);
+    border-color: rgba(10, 132, 255, 0.6);
+}
+
+.save {
+    color: #0a84ff;
+    border-color: rgba(10, 132, 255, 0.4);
+}
+
+.save:hover {
+    background-color: rgba(10, 132, 255, 0.1);
+    border-color: rgba(10, 132, 255, 0.6);
+}
+
+.cancel {
+    color: #ff3b30;
+    border-color: rgba(255, 59, 48, 0.4);
+}
+
+.cancel:hover {
+    background-color: rgba(255, 59, 48, 0.1);
+    border-color: rgba(255, 59, 48, 0.6);
+}
+
+.delete {
+    color: #ff3b30;
+    border-color: rgba(255, 59, 48, 0.4);
+}
+
+.delete:hover {
+    background-color: rgba(255, 59, 48, 0.1);
+    border-color: rgba(255, 59, 48, 0.6);
+}
+.copy {
+    color: #87ceeb;
+    border-color: rgba(135, 206, 235, 0.4);
+}
+
+.copy:hover {
+    background-color: rgba(135, 206, 235, 0.1);
+    border-color: rgba(135, 206, 235, 0.6);
+}
+.call {
+    color: #30d158;
+    border-color: rgba(48, 209, 88, 0.4);
+}
+
+.call:hover {
+    background-color: rgba(48, 209, 88, 0.1);
+    border-color: rgba(48, 209, 88, 0.6);
+}

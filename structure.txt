@@ -1,0 +1,51 @@
+.
+├── README.md
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── public
+│   └── vite.svg
+├── src
+│   ├── assets
+│   │   ├── img_01.png
+│   │   ├── img_02.png
+│   │   └── react.svg
+│   ├── components
+│   │   ├── App
+│   │   │   ├── App.jsx
+│   │   │   └── App.module.css
+│   │   ├── Contact
+│   │   │   ├── Contact.jsx
+│   │   │   └── Contact.module.css
+│   │   ├── ContactForm
+│   │   │   ├── ContactForm.jsx
+│   │   │   └── ContactForm.module.css
+│   │   ├── ContactList
+│   │   │   ├── ContactList.jsx
+│   │   │   └── ContactList.module.css
+│   │   ├── DeleteButton
+│   │   │   ├── DeleteButton.jsx
+│   │   │   └── DeleteButton.module.css
+│   │   └── SearchBox
+│   │       ├── SearchBox.jsx
+│   │       └── SearchBox.module.css
+│   ├── index.css
+│   ├── main.jsx
+│   └── redux
+│       ├── auth
+│       │   ├── operations.js
+│       │   ├── selectors.js
+│       │   └── slice.js
+│       ├── contacts
+│       │   ├── operations.js
+│       │   ├── selectors.js
+│       │   └── slice.js
+│       ├── filters
+│       │   ├── selectors.js
+│       │   └── slice.js
+│       └── store.js
+├── structure.txt
+└── vite.config.js
+
+15 directories, 34 files

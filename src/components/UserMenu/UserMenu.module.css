@@ -1,0 +1,13 @@
+.userMenu {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: flex-end;
+}
+
+.email {
+    font-size: 0.95rem;
+    color: #fcc0ca;
+    font-weight: 500;
+    margin: 0;
+}
