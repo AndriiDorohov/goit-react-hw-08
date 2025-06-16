@@ -75,4 +75,5 @@ input:-webkit-autofill:active {
     color: #ff3b30;
     font-size: 0.875rem;
     margin-top: 4px;
+    text-shadow: 0 0 5px #ff3b30;
 }
