@@ -38,7 +38,6 @@ export default function ContactList({ selectedCountry }) {
 
   if (isRefreshing) return null;
   if (isLoading && !hasLoadedOnce) return <p>Loading contacts...</p>;
-  if (error) return <p>Error: {error}</p>;
 
   const groupedContacts = groupContactsByCountry(contacts);
   const sortedCountries = Object.keys(groupedContacts).sort();
@@ -49,12 +48,17 @@ export default function ContactList({ selectedCountry }) {
       groupedContacts[country].length > 0,
   );
 
-  if (!hasVisibleContacts && hasLoadedOnce) {
+  if (!hasVisibleContacts && hasLoadedOnce && !error) {
     return <p>No contacts found.</p>;
   }
 
   return (
     <div className={styles.scrollContainer}>
+      {error && (
+        <p className={styles.errorBanner} role="alert">
+          Error: {error}
+        </p>
+      )}
       <ul className={styles.contactList}>
         {sortedCountries.map((country) => {
           if (selectedCountry && selectedCountry !== country) return null;
