@@ -11,10 +11,12 @@ import {
 } from "react-icons/io5";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { toast } from "react-hot-toast";
+import { ValidationError } from "yup";
 import { updateContact } from "../../redux/contacts/operations";
 import IconButton from "../IconButton/IconButton";
 import Card from "../Card/Card";
 import { getCountryInfo, countryToEmoji } from "../../utils/contactUtils";
+import { contactSchema } from "../../utils/contactSchema";
 import styles from "./Contact.module.css";
 
 export default function Contact({ id, name, number, onDeleteContact }) {
@@ -22,9 +24,12 @@ export default function Contact({ id, name, number, onDeleteContact }) {
   const [isEditing, setIsEditing] = useState(false);
   const [newName, setNewName] = useState(name);
   const [newNumber, setNewNumber] = useState(number);
+  const [isSaving, setIsSaving] = useState(false);
+  const [editError, setEditError] = useState(null);
   const [showCallOptions, setShowCallOptions] = useState(false);
 
   const menuRef = useRef(null);
+  const savingRef = useRef(false);
   const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
   useEffect(() => {
@@ -40,18 +45,47 @@ export default function Contact({ id, name, number, onDeleteContact }) {
     };
   }, []);
 
+  const startEditing = () => {
+    setNewName(name);
+    setNewNumber(number);
+    setEditError(null);
+    setIsEditing(true);
+  };
+
+  const cancelEditing = () => {
+    if (savingRef.current) return;
+    setNewName(name);
+    setNewNumber(number);
+    setEditError(null);
+    setIsEditing(false);
+  };
+
   const handleSave = async () => {
+    // A synchronous ref prevents repeated clicks from creating concurrent PATCHes.
+    if (savingRef.current) return;
+    savingRef.current = true;
+    setIsSaving(true);
+    setEditError(null);
+
     try {
-      await dispatch(
-        updateContact({
-          id,
-          updatedData: { name: newName, number: newNumber },
-        }),
-      ).unwrap();
+      const updatedData = await contactSchema.validate({
+        name: newName.trim(),
+        number: newNumber.trim(),
+      });
+
+      await dispatch(updateContact({ id, updatedData })).unwrap();
       toast.success("Contact updated.");
       setIsEditing(false);
-    } catch {
-      toast.error("Failed to update contact.");
+    } catch (error) {
+      if (error instanceof ValidationError) {
+        setEditError(error.errors[0] || "Please check the contact details.");
+      } else {
+        setEditError("Unable to save. Please try again.");
+        toast.error("Failed to update contact.");
+      }
+    } finally {
+      savingRef.current = false;
+      setIsSaving(false);
     }
   };
 
@@ -100,15 +134,23 @@ export default function Contact({ id, name, number, onDeleteContact }) {
           <input
             className={styles.input}
             value={newName}
-            onChange={(e) => setNewName(e.target.value)}
+            onChange={(e) => {
+              setNewName(e.target.value);
+              setEditError(null);
+            }}
             placeholder="Name"
+            disabled={isSaving}
             aria-label="Name"
           />
           <input
             className={styles.input}
             value={newNumber}
-            onChange={(e) => setNewNumber(e.target.value)}
+            onChange={(e) => {
+              setNewNumber(e.target.value);
+              setEditError(null);
+            }}
             placeholder="Number"
+            disabled={isSaving}
             aria-label="Number"
           />
         </div>
@@ -175,7 +217,7 @@ export default function Contact({ id, name, number, onDeleteContact }) {
               <IoCopyOutline />
             </IconButton>
             <IconButton
-              onClick={() => setIsEditing(true)}
+              onClick={startEditing}
               variant="edit"
               ariaLabel="Edit"
               title="Edit"
@@ -195,24 +237,34 @@ export default function Contact({ id, name, number, onDeleteContact }) {
       )}
 
       {isEditing && (
-        <div className={styles.buttons}>
-          <IconButton
-            onClick={handleSave}
-            variant="save"
-            ariaLabel="Save"
-            title="Save"
-          >
-            <IoSaveOutline />
-          </IconButton>
-          <IconButton
-            onClick={() => setIsEditing(false)}
-            variant="cancel"
-            ariaLabel="Cancel"
-            title="Cancel"
-          >
-            <IoCloseOutline />
-          </IconButton>
-        </div>
+        <>
+          {editError && (
+            <p className={styles.editError} role="alert">
+              {editError}
+            </p>
+          )}
+          <div className={styles.buttons}>
+            {isSaving && <span role="status">Saving...</span>}
+            <IconButton
+              onClick={handleSave}
+              variant="save"
+              ariaLabel="Save"
+              title="Save"
+              disabled={isSaving}
+            >
+              <IoSaveOutline />
+            </IconButton>
+            <IconButton
+              onClick={cancelEditing}
+              variant="cancel"
+              ariaLabel="Cancel"
+              title="Cancel"
+              disabled={isSaving}
+            >
+              <IoCloseOutline />
+            </IconButton>
+          </div>
+        </>
       )}
     </Card>
   );
