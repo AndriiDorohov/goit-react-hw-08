@@ -10,6 +10,6 @@ export const contactSchema = object({
     )
     .required("Name is required"),
   number: string()
-    .matches(/^\+?[0-9\s\-]{7,20}$/, "Invalid phone number format")
+    .matches(/^\+?[0-9\s-]{7,20}$/, "Invalid phone number format")
     .required("Phone number is required"),
 });
