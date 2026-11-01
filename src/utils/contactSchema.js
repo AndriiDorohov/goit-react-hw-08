@@ -6,10 +6,16 @@ export const contactSchema = object({
   name: string()
     .matches(
       /^[a-zA-Zа-яА-ЯіІїЇєЄёЁ'’\- ]{2,}$/,
-      "Name must contain only letters and be at least 2 characters",
+      {
+        message: "Name must contain only letters and be at least 2 characters",
+        excludeEmptyString: true,
+      },
     )
     .required("Name is required"),
   number: string()
-    .matches(/^\+?[0-9\s-]{7,20}$/, "Invalid phone number format")
+    .matches(/^\+?[0-9\s-]{7,20}$/, {
+      message: "Invalid phone number format",
+      excludeEmptyString: true,
+    })
     .required("Phone number is required"),
 });
