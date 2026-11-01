@@ -188,6 +188,20 @@ class BrowserContactTests(unittest.TestCase):
             376,
             "375 px contacts page has horizontal overflow",
         )
+        # A clipped layout can have zero overflow while hiding all contact
+        # cards offscreen; verify the real content is reachable and visible.
+        card = self.page.locator('[class*="contactItem"]')
+        card.scroll_into_view_if_needed()
+        bounds = card.bounding_box()
+        self.assertIsNotNone(bounds)
+        self.assertGreaterEqual(bounds["x"], -1, bounds)
+        self.assertLessEqual(bounds["x"] + bounds["width"], 376, bounds)
+        self.assertTrue(self.page.get_by_role("button", name="Edit").is_visible())
+        self.assertGreater(
+            self.page.evaluate("document.documentElement.scrollHeight"),
+            812,
+            "Mobile page should scroll vertically to reach contacts",
+        )
 
     def test_preview_screenshots(self):
         output = ROOT / "screenshots"
@@ -198,6 +212,7 @@ class BrowserContactTests(unittest.TestCase):
             animations="disabled",
         )
         self.page.set_viewport_size({"width": 375, "height": 812})
+        self.page.get_by_text(EXAMPLE["name"], exact=True).scroll_into_view_if_needed()
         self.page.screenshot(
             path=str(output / "contacts-mobile.png"),
             full_page=True,
