@@ -11,7 +11,7 @@ import {
   selectIsRefreshing,
 } from "../../redux/auth/selectors";
 import Contact from "../Contact/Contact";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion as Motion, AnimatePresence } from "framer-motion";
 import {
   groupContactsByCountry,
   countryToEmoji,
@@ -82,7 +82,7 @@ export default function ContactList({ selectedCountry }) {
 
               <AnimatePresence>
                 {countryContacts.map(({ id, name, number }) => (
-                  <motion.div
+                  <Motion.div
                     key={id}
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -95,7 +95,7 @@ export default function ContactList({ selectedCountry }) {
                       number={number}
                       onDeleteContact={() => dispatch(deleteContact(id))}
                     />
-                  </motion.div>
+                  </Motion.div>
                 ))}
               </AnimatePresence>
             </li>
