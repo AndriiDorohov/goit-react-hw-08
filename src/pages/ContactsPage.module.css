@@ -46,15 +46,35 @@
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
+        height: auto;
+        min-height: 0;
+        width: 100%;
+        overflow: visible;
+    }
+
+    .scrollContainer {
+        width: 100%;
+        min-width: 0;
+        overflow: visible;
     }
 
     .sidebar {
         width: 100%;
+        min-width: 0;
+        margin: 0;
+        padding: 1rem;
+        overflow: visible;
+        gap: 1rem;
         border-right: none;
         border-bottom: 1px solid #333;
     }
 
     .main {
+        width: 100%;
+        min-width: 0;
+        overflow: visible;
         padding: 1rem;
+        align-items: stretch;
+        border-left: none;
     }
 }
