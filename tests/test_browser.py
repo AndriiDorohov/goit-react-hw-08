@@ -76,11 +76,11 @@ class BrowserContactTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.server = subprocess.Popen(
-            ["npm", "run", "preview", "--", "--host", "127.0.0.1",
-             "--port", "4173", "--strictPort"],
+            ["node", "node_modules/vite/bin/vite.js", "preview",
+             "--host", "127.0.0.1", "--port", "4173", "--strictPort"],
             cwd=ROOT,
             stdout=subprocess.DEVNULL,
-            stderr=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
         )
         for _ in range(80):
             if cls.server.poll() is not None:
@@ -129,8 +129,8 @@ class BrowserContactTests(unittest.TestCase):
     def open_editor(self):
         self.page.get_by_role("button", name="Edit", exact=True).click()
         return (
-            self.page.get_by_role("textbox", name="Name"),
-            self.page.get_by_role("textbox", name="Number"),
+            self.page.get_by_placeholder("Name", exact=True),
+            self.page.get_by_placeholder("Number", exact=True),
         )
 
     def test_authenticated_contact_list_renders(self):
