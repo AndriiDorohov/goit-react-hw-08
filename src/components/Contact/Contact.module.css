@@ -154,3 +154,15 @@
         box-shadow: 0 0 20px rgba(255, 182, 230, 0.3);
     }
 }
+
+.editError {
+    margin: 8px 0;
+    color: #ffb4af;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.buttons button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
