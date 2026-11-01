@@ -16,7 +16,7 @@ export default function ContactForm() {
       ).unwrap();
       toast.success("Contact added successfully!");
       resetForm();
-    } catch (error) {
+    } catch {
       toast.error("Failed to add contact.");
     }
   };
