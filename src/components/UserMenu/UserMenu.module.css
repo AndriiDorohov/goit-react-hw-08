@@ -11,3 +11,18 @@
     font-weight: 500;
     margin: 0;
 }
+
+@media (max-width: 768px) {
+    .userMenu {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        min-width: 0;
+        max-width: 100%;
+        gap: 8px;
+    }
+
+    .email {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+}
