@@ -1,22 +1,10 @@
 import { useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { object, string } from "yup";
 import { toast } from "react-hot-toast";
 import { addContact } from "../../redux/contacts/operations";
+import { contactSchema } from "../../utils/contactSchema";
 import Button from "../Button/Button";
 import styles from "./ContactForm.module.css";
-
-const ContactSchema = object({
-  name: string()
-    .matches(
-      /^[a-zA-Zа-яА-ЯіІїЇєЄёЁ'’\- ]{2,}$/,
-      "Name must contain only letters and be at least 2 characters",
-    )
-    .required("Name is required"),
-  number: string()
-    .matches(/^\+?[0-9\s\-]{7,20}$/, "Invalid phone number format")
-    .required("Phone number is required"),
-});
 
 export default function ContactForm() {
   const dispatch = useDispatch();
@@ -28,7 +16,7 @@ export default function ContactForm() {
       ).unwrap();
       toast.success("Contact added successfully!");
       resetForm();
-    } catch (error) {
+    } catch {
       toast.error("Failed to add contact.");
     }
   };
@@ -37,7 +25,7 @@ export default function ContactForm() {
     <div className="card">
       <Formik
         initialValues={{ name: "", number: "" }}
-        validationSchema={ContactSchema}
+        validationSchema={contactSchema}
         onSubmit={handleSubmit}
       >
         {() => (

@@ -4,3 +4,11 @@
     height: 100vh;
     overflow: hidden;
 }
+
+@media (max-width: 768px) {
+    .wrapper {
+        height: auto;
+        min-height: 100dvh;
+        overflow: visible;
+    }
+}

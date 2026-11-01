@@ -10,11 +10,6 @@ export default function SidebarFilters({ selectedCountry, onSelectCountry }) {
   const contacts = useSelector(selectFilteredContacts);
   const grouped = groupContactsByCountry(contacts);
   const countries = Object.keys(grouped).sort();
-  const sortedCountries = Object.keys(grouped).sort((a, b) => {
-    if (a === "Unknown") return 1;
-    if (b === "Unknown") return -1;
-    return a.localeCompare(b);
-  });
 
   return (
     <div className={styles.filterBlock}>

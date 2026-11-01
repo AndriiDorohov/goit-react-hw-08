@@ -22,7 +22,7 @@ export default function LoginForm() {
       await dispatch(login(values)).unwrap();
       toast.success("Login successful!");
       actions.resetForm();
-    } catch (error) {
+    } catch {
       toast.error("Login failed. Check your credentials.");
     }
   };

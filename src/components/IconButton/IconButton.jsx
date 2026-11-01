@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import clsx from "clsx";
 import styles from "./IconButton.module.css";
 
@@ -11,7 +11,7 @@ export default function IconButton({
   ...props
 }) {
   return (
-    <motion.button
+    <Motion.button
       type="button"
       whileTap={{ scale: 0.9 }}
       onClick={onClick}
@@ -21,6 +21,6 @@ export default function IconButton({
       {...props}
     >
       {children}
-    </motion.button>
+    </Motion.button>
   );
 }

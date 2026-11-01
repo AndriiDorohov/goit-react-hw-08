@@ -76,3 +76,7 @@ input:-webkit-autofill {
         0 0 8px #0ff,
         0 0 12px #0ff;
 }
+
+.input {
+    min-width: 0;
+}
