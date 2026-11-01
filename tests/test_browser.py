@@ -181,31 +181,37 @@ class BrowserContactTests(unittest.TestCase):
         self.page.get_by_text("Double Click", exact=True).wait_for(state="visible")
         self.assertEqual(len(self.api.patches), 1)
 
-    def test_mobile_viewport_has_no_horizontal_scroll(self):
-        self.page.set_viewport_size({"width": 375, "height": 812})
-        self.assertLessEqual(
-            self.page.evaluate("document.documentElement.scrollWidth"),
-            376,
-            "375 px contacts page has horizontal overflow",
-        )
-        # A clipped layout can have zero overflow while hiding all contact
-        # cards offscreen; verify the real content is reachable and visible.
-        card = self.page.locator('[class*="contactItem"]')
-        card.scroll_into_view_if_needed()
-        bounds = card.bounding_box()
-        self.assertIsNotNone(bounds)
-        self.assertGreaterEqual(bounds["x"], -1, bounds)
-        self.assertLessEqual(bounds["x"] + bounds["width"], 376, bounds)
-        self.assertTrue(self.page.get_by_role("button", name="Edit").is_visible())
-        self.assertGreater(
-            self.page.evaluate("document.documentElement.scrollHeight"),
-            812,
-            "Mobile page should scroll vertically to reach contacts",
-        )
+    def test_mobile_viewports_show_contact_card(self):
+        for width in (320, 375):
+            with self.subTest(width=width):
+                self.page.set_viewport_size({"width": width, "height": 812})
+                self.assertLessEqual(
+                    self.page.evaluate("document.documentElement.scrollWidth"),
+                    width + 1,
+                    f"{width}px contacts page has horizontal overflow",
+                )
+                # A clipped layout can have zero overflow while hiding all
+                # contacts offscreen: check the actual card's screen position.
+                card = self.page.locator('[class*="contactItem"]')
+                card.scroll_into_view_if_needed()
+                bounds = card.bounding_box()
+                self.assertIsNotNone(bounds)
+                self.assertGreaterEqual(bounds["x"], -1, bounds)
+                self.assertLessEqual(bounds["x"] + bounds["width"], width + 1, bounds)
+                self.assertTrue(self.page.get_by_role("button", name="Edit").is_visible())
+                self.assertGreater(
+                    self.page.evaluate("document.documentElement.scrollHeight"),
+                    812,
+                    "Mobile page should scroll vertically to reach contacts",
+                )
 
     def test_preview_screenshots(self):
         output = ROOT / "screenshots"
         output.mkdir(exist_ok=True)
+        # Avoid covering the form and account controls with the login toast.
+        self.page.get_by_text("Login successful!", exact=True).wait_for(
+            state="hidden", timeout=10000
+        )
         self.page.screenshot(
             path=str(output / "contacts-desktop.png"),
             full_page=True,
